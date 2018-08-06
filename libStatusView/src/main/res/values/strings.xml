@@ -1,0 +1,4 @@
+<resources>
+    <string name="app_name">Status View</string>
+    <string name="label_loading">Carregando&#8230;</string>
+</resources>
