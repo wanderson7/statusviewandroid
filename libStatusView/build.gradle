@@ -12,7 +12,6 @@ android {
         versionName "1.0.0"
 
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
-
     }
 
     buildTypes {
@@ -21,81 +20,81 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
     }
+}
 
-    def siteUrl = 'https://github.com/wanderson7/statusviewandroid'
-    def gitUrl  = 'https://github.com/wanderson7/statusviewandroid.git'
-    group       = "com.wandersonsantos"
-    install {
-        repositories.mavenInstaller {
-            // para gerar o arquivo POM.xml
-            pom {
-                project {
-                    packaging 'aar'
+def siteUrl = 'https://github.com/wanderson7/statusviewandroid'
+def gitUrl  = 'https://github.com/wanderson7/statusviewandroid.git'
+group       = "com.wandersonsantos"
+install {
+    repositories.mavenInstaller {
+        // para gerar o arquivo POM.xml
+        pom {
+            project {
+                packaging 'aar'
 
-                    // Add your description here
-                    name 'com/wanderson7/statusviewandroid'
-                    description = 'library to status view'
+                // Add your description here
+                name 'com/wanderson7/statusviewandroid'
+                description = 'library to status view'
+                url siteUrl
+
+                licenses {
+                    license {
+                        name 'MIT'
+                        url 'https://opensource.org/licenses/MIT'
+                    }
+                }
+                developers {
+                    developer {
+                        id 'wanderson7'
+                        name 'Wanderson Santos'
+                        email 'wandeerson7@gmail.com'
+                    }
+                }
+                scm {
+                    connection gitUrl
+                    developerConnection gitUrl
                     url siteUrl
-
-                    licenses {
-                        license {
-                            name 'MIT'
-                            url 'https://opensource.org/licenses/MIT'
-                        }
-                    }
-                    developers {
-                        developer {
-                            id 'wanderson7'
-                            name 'Wanderson Santos'
-                            email 'wandeerson7@gmail.com'
-                        }
-                    }
-                    scm {
-                        connection gitUrl
-                        developerConnection gitUrl
-                        url siteUrl
-                    }
                 }
             }
         }
     }
+}
 
-    task sourcesJar(type: Jar) {
-        from android.sourceSets.main.java.srcDirs
-        classifier = 'sources'
-    }
+task sourcesJar(type: Jar) {
+    from android.sourceSets.main.java.srcDirs
+    classifier = 'sources'
+}
 
-    task javadoc(type: Javadoc) {
-        source = android.sourceSets.main.java.srcDirs
-        classpath += project.files(android.getBootClasspath().join(File.pathSeparator))
-    }
+task javadoc(type: Javadoc) {
+    source = android.sourceSets.main.java.srcDirs
+    classpath += project.files(android.getBootClasspath().join(File.pathSeparator))
+}
 
-    task javadocJar(type: Jar, dependsOn: javadoc) {
-        classifier = 'javadoc'
-        from javadoc.destinationDir
-    }
-    artifacts {
-        archives javadocJar
-        archives sourcesJar
-    }
+task javadocJar(type: Jar, dependsOn: javadoc) {
+    classifier = 'javadoc'
+    from javadoc.destinationDir
+}
+artifacts {
+    archives javadocJar
+    archives sourcesJar
+}
 
-    Properties properties = new Properties()
-    properties.load(project.rootProject.file('local.properties').newDataInputStream())
+Properties properties = new Properties()
+properties.load(project.rootProject.file('local.properties').newDataInputStream())
 
 // https://github.com/bintray/gradle-bintray-plugin
-    bintray {
-        user = properties.getProperty("bintray.user")
-        key = properties.getProperty("bintray.apikey")
+bintray {
+    user = properties.getProperty("bintray.user")
+    key = properties.getProperty("bintray.apikey")
 
-        configurations = ['archives']
-        pkg {
-            repo = "maven"
-            name = "com/wanderson7/statusView"
-            websiteUrl = siteUrl
-            vcsUrl     = gitUrl
-            licenses   = ['MIT']
-            publish    = true
-        }
+    configurations = ['archives']
+    pkg {
+        repo = "maven"
+        name = "com/wanderson7/statusView"
+        websiteUrl = siteUrl
+        vcsUrl     = gitUrl
+        licenses   = ['MIT']
+        publish    = true
     }
 }
 

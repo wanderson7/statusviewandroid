@@ -1,7 +1,6 @@
 package br.com.designa.www.libstatusview;
 
 import android.content.Context;
-import android.support.v4.content.ContextCompat;
 import android.view.Gravity;
 import android.view.View;
 import android.widget.Button;
@@ -34,13 +33,13 @@ public class DefaultErrorView {
         errorTextView.setGravity(Gravity.CENTER);
         errorTextView.setPadding(8, 8, 8, 8);
         errorTextView.setTextSize(18);
-        errorTextView.setTextColor(ContextCompat.getColor(context, android.R.color.tertiary_text_dark));
+        errorTextView.setTextColor(context.getResources().getColor(android.R.color.tertiary_text_dark));
         containerError.addView(errorTextView);
 
         errorButton = new Button(context);
         errorButton.setLayoutParams(componentParams);
         errorButton.setPadding(32, 16, 32, 16);
-        errorButton.setTextColor(ContextCompat.getColor(context, android.R.color.background_dark));
+        errorButton.setTextColor(context.getResources().getColor(android.R.color.background_dark));
         containerError.addView(errorButton);
     }
 
