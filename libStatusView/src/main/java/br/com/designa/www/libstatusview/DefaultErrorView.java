@@ -47,11 +47,21 @@ public class DefaultErrorView {
        return containerError;
     }
 
-    public TextView getTextViewError() {
+    public TextView getTextViewError(int left, int top, int right, int bottom) {
+        errorTextView.setPadding(left, top, right, bottom);
+        return errorTextView;
+    }
+
+    public TextView getMarginTextViewError() {
         return errorTextView;
     }
 
     public Button getButtonError() {
+        return errorButton;
+    }
+
+    public Button getPaddingButtonError(int left, int top, int right, int bottom) {
+        errorButton.setPadding(left, top, right, bottom);
         return errorButton;
     }
 
