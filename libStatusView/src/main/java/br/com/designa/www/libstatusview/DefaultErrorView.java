@@ -52,6 +52,10 @@ public class DefaultErrorView {
         return errorTextView;
     }
 
+    public TextView getTextViewError() {
+        return errorTextView;
+    }
+
     public TextView getMarginTextViewError() {
         return errorTextView;
     }
@@ -60,7 +64,7 @@ public class DefaultErrorView {
         return errorButton;
     }
 
-    public Button getPaddingButtonError(int left, int top, int right, int bottom) {
+    public Button getButtonError(int left, int top, int right, int bottom) {
         errorButton.setPadding(left, top, right, bottom);
         return errorButton;
     }
