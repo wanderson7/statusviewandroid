@@ -23,6 +23,7 @@ public class DefaultErrorView {
         containerError.setPadding(16, 16, 16, 16);
 
         componentParams = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.WRAP_CONTENT, LinearLayout.LayoutParams.WRAP_CONTENT);
+        componentParams.setMargins(0, 0, 0, 32);
 
         errorImg = new ImageView(context);
         errorImg.setLayoutParams(componentParams);
@@ -43,10 +44,18 @@ public class DefaultErrorView {
         containerError.addView(errorButton);
     }
 
-    public void setComponentParams(int left, int top, int right, int bottom) {
+    public void setComponentParamsTextView(int left, int top, int right, int bottom) {
+        componentParams.setMargins(left, top, right, bottom);
+        errorTextView.setLayoutParams(componentParams);
+    }
+
+    public void setComponentParamsImageView(int left, int top, int right, int bottom) {
         componentParams.setMargins(left, top, right, bottom);
         errorImg.setLayoutParams(componentParams);
-        errorTextView.setLayoutParams(componentParams);
+    }
+
+    public void setComponentParamsButton(int left, int top, int right, int bottom) {
+        componentParams.setMargins(left, top, right, bottom);
         errorButton.setLayoutParams(componentParams);
     }
 
@@ -63,10 +72,6 @@ public class DefaultErrorView {
         return errorTextView;
     }
 
-    public TextView getMarginTextViewError() {
-        return errorTextView;
-    }
-
     public Button getButtonError() {
         return errorButton;
     }
@@ -77,6 +82,11 @@ public class DefaultErrorView {
     }
 
     public ImageView getImgError() {
+        return errorImg;
+    }
+
+    public ImageView getImgError(int left, int top, int right, int bottom) {
+        errorImg.setPadding(left, top, right, bottom);
         return errorImg;
     }
 }

@@ -166,11 +166,11 @@ public class StatusView {
         return result;
     }
 
-    private View getErrorLayout() {
+    public View getErrorLayout() {
         return errorLayout;
     }
 
-    private View getLoadingLayout() {
+    public View getLoadingLayout() {
         return loadingLayout;
     }
 
