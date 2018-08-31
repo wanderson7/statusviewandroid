@@ -2,18 +2,18 @@ package br.com.designa.www.statusview;
 
 import android.os.Handler;
 import android.support.annotation.Nullable;
-import android.support.constraint.ConstraintLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.Gravity;
 import android.view.View;
+import android.widget.LinearLayout;
 
 import br.com.designa.www.libstatusview.StatusView;
 
 public class MainActivity extends AppCompatActivity {
 
-    private ConstraintLayout rootView;
+    private LinearLayout rootView;
     private StatusView statusView;
 
     @Override

@@ -13,6 +13,7 @@ public class DefaultErrorView {
     private Button errorButton;
     private ImageView errorImg;
     private LinearLayout containerError;
+    private LinearLayout.LayoutParams componentParams;
 
     DefaultErrorView(Context context) {
         containerError = new LinearLayout(context);
@@ -21,13 +22,12 @@ public class DefaultErrorView {
         containerError.setGravity(Gravity.CENTER);
         containerError.setPadding(16, 16, 16, 16);
 
-        LinearLayout.LayoutParams componentParams = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.WRAP_CONTENT, LinearLayout.LayoutParams.WRAP_CONTENT);
+        componentParams = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.WRAP_CONTENT, LinearLayout.LayoutParams.WRAP_CONTENT);
 
         errorImg = new ImageView(context);
         errorImg.setLayoutParams(componentParams);
         containerError.addView(errorImg);
 
-        componentParams.setMargins(0,0,0,32);
         errorTextView = new TextView(context);
         errorTextView.setLayoutParams(componentParams);
         errorTextView.setGravity(Gravity.CENTER);
@@ -41,6 +41,13 @@ public class DefaultErrorView {
         errorButton.setPadding(32, 16, 32, 16);
         errorButton.setTextColor(context.getResources().getColor(android.R.color.background_dark));
         containerError.addView(errorButton);
+    }
+
+    public void setComponentParams(int left, int top, int right, int bottom) {
+        componentParams.setMargins(left, top, right, bottom);
+        errorImg.setLayoutParams(componentParams);
+        errorTextView.setLayoutParams(componentParams);
+        errorButton.setLayoutParams(componentParams);
     }
 
     public View getView() {
